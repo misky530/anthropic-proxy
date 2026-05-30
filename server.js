@@ -21,7 +21,7 @@ const app = express();
 // ── 配置 ──────────────────────────────────────────────────────────
 const CONFIG = {
   // 上游 OpenAI 兼容网关地址
-  UPSTREAM_BASE_URL: process.env.UPSTREAM_BASE_URL || 'https://ai.ctaigw.cn/v1',
+  UPSTREAM_BASE_URL: process.env.UPSTREAM_BASE_URL || 'https://api.deepseek.com',
 
   // 上游默认使用的 API Key（如果你想统一用自己的 key 而不是透传用户 key）
   // 留空则透传用户发来的 key
@@ -214,8 +214,13 @@ app.use((req, res, next) => {
 
 // 健康检查
 app.get('/health', (req, res) => {
-  res.json({ status: 'ok', upstream: CONFIG.UPSTREAM_BASE_URL, version: '1.0.0' });
+  res.json({ status: 'ok', upstream: CONFIG.UPSTREAM_BASE_URL, version: '1.1.0' });
 });
+
+// Claude Desktop 第三方推理认证验证接口
+// 不实现这个接口会显示 "Couldn't sign in to Gateway"
+app.get('/v1/auth/validate', (req, res) => res.json({ valid: true }));
+app.post('/v1/auth/validate', (req, res) => res.json({ valid: true }));
 
 // 模拟 Anthropic models 列表（Claude Code 启动时会查询）
 app.get('/v1/models', (req, res) => {

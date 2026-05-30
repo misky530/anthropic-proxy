@@ -5,10 +5,10 @@ services:
     ports:
       - "3456:3456"
     environment:
-      - UPSTREAM_BASE_URL=https://ai.ctaigw.cn/v1
+      - UPSTREAM_BASE_URL=https://api.deepseek.com
       - UPSTREAM_API_KEY=${UPSTREAM_API_KEY:-}
-      - DEFAULT_MODEL=deepseek-v3.2
-      - MODEL_CLAUDE_SONNET=deepseek-v3.2
-      - MODEL_CLAUDE_HAIKU=qwen3-coder-next
+      - DEFAULT_MODEL=deepseek-chat
+      - MODEL_CLAUDE_SONNET=deepseek-chat
+      - MODEL_CLAUDE_HAIKU=deepseek-chat
       - DEBUG=false
     restart: unless-stopped
