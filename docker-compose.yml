@@ -1,9 +1,9 @@
-version: '3.8'
+version: "3.8"
 services:
   proxy:
     build: .
     ports:
-      - "3456:3456"
+      - "28095:3456"
     environment:
       - UPSTREAM_BASE_URL=https://api.deepseek.com
       - UPSTREAM_API_KEY=${UPSTREAM_API_KEY:-}
