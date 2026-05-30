@@ -1,0 +1,25 @@
+{
+  "name": "ai-coding-gateway-demo",
+  "version": "1.0.0",
+  "description": "AI Coding Gateway 视频演示项目",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "jest --coverage --passWithNoTests",
+    "test:watch": "jest --watch"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ],
+    "coverageReporters": ["text", "lcov"],
+    "coverageThreshold": {}
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "bcryptjs": "^2.4.3"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0"
+  }
+}
